@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  pva-paper:
+    build: .
+    volumes:
+      - .:/app
+      - ./data:/app/data
+    command: make repro

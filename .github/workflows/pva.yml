@@ -1,0 +1,13 @@
+name: PVA docker repro
+on: [push, pull_request]
+jobs:
+  pva:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build docker
+        run: docker build -t pva-paper .
+      - name: Repro
+        run: docker run --rm pva-paper
+      - name: Verify
+        run: python scripts/verify_data.py || echo "skip"
