@@ -10,4 +10,4 @@ jobs:
       - name: Repro
         run: docker run --rm pva-paper
       - name: Verify
-        run: python scripts/verify_data.py || echo "skip"
+        run: python3 -m unittest discover -s tests -v

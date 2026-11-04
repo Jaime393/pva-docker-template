@@ -1,15 +1,14 @@
 repro:
-	python scripts/repro.py
-	python -m pva_lint.cli --json || python ../pva-lint/cli.py --json || python cli.py --json || echo "pva-lint no encontrado, ok"
+	python3 scripts/repro.py
 
 dev:
 	bash
 
 test:
-	python scripts/verify_data.py
+	python3 -m unittest discover -s tests -v
 
 lint:
-	python scripts/verify_data.py
+	python3 scripts/verify_data.py
 
 reproduce:
-	python scripts/repro.py
+	python3 scripts/repro.py
