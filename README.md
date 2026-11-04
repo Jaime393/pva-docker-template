@@ -1,22 +1,13 @@
-# pva-docker-template V202 — ρ(x)>0
+# pva-docker-template
 
-Plantilla reproducibilidad universal — cualquier paper se ejecuta con un solo comando.
+Plantilla de reproducción de un resumen CSV determinista. El recorrido local valida estructura y resume los valores presentes; no acredita que la muestra provenga de GRACE ni reproduce una hipótesis física.
 
 ```bash
-make repro
-# o
-docker build -t pva-paper .
-docker run --rm pva-paper
-# o
-docker-compose up
+make reproduce
+make test
+python3 scripts/repro.py --data data/GRACE_TN14_REAL_TEMPLATE.csv
 ```
 
-Incluye:
-- Dockerfile base python:3.11-slim + make
-- docker-compose.yml
-- Makefile con objetivos: repro, dev, test, lint, reproduce
-- data/GRACE_TN14_REAL_TEMPLATE.csv C20 -0.0004846999 DOI 10.1029/2019GL085488 Ktau 0.3644 r=-0.868
-- scripts/verify_data.py
-- scripts/repro.py
+La salida `pva.csv-summary/v1` incluye SHA-256 de los datos, fechas, número de registros y estadísticas descriptivas. No escribe un PNG ficticio, constantes Ki/r como resultados calculados ni un score científico.
 
-PVA score esperado: 1.0
+Dockerfile y compose se conservan como rutas de empaquetado. Esta revisión fue probada en Python local; no se afirma construcción o ejecución Docker cuando el runtime no está disponible.
